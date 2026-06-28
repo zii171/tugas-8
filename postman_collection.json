@@ -1,0 +1,81 @@
+{
+  "info": {
+    "name": "Products API - MongoDB (Tugas 8)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "productId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "POST /products (Create)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Laptop ASUS ROG\",\n  \"price\": 15000000,\n  \"description\": \"Laptop gaming dengan RTX 4060\",\n  \"category\": \"Elektronik\",\n  \"stock\": 5,\n  \"isAvailable\": true\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/products", "host": ["{{baseUrl}}"], "path": ["products"] }
+      }
+    },
+    {
+      "name": "GET /products (Read All)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/products", "host": ["{{baseUrl}}"], "path": ["products"] }
+      }
+    },
+    {
+      "name": "GET /products/search?q=keyword",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/products/search?q=laptop",
+          "host": ["{{baseUrl}}"],
+          "path": ["products", "search"],
+          "query": [{ "key": "q", "value": "laptop" }]
+        }
+      }
+    },
+    {
+      "name": "GET /products/:id (Read One)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/products/{{productId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["products", "{{productId}}"]
+        }
+      }
+    },
+    {
+      "name": "PUT /products/:id (Update)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"price\": 14000000,\n  \"stock\": 8\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/products/{{productId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["products", "{{productId}}"]
+        }
+      }
+    },
+    {
+      "name": "DELETE /products/:id (Delete)",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{baseUrl}}/products/{{productId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["products", "{{productId}}"]
+        }
+      }
+    }
+  ]
+}
